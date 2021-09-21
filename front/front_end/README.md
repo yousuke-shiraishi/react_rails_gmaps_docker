@@ -1,0 +1,4 @@
+Gmapアプリのフロントエンド部分
+useContextの代わりにrecoilを使いたかったが不具合により断念
+開発環境のためにデバッグ用に@welldone-software/why-did-you-renderを動かしている。
+本番環境では削除すべき。

@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  postgresql:
+    build:
+      context: .
+      dockerfile: ./postgresql/Dockerfile
+    environment:
+      POSTGRES_PASSWORD: "postgres_password"
+      POSTGRES_USER: "postgres_master"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  api:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: "development"
+      POSTGRESQL_USER: "postgres_master"
+      POSTGRESQL_PASSWORD: "postgres_password"
+      POSTGRESQL_HOST: "postgresql"
+    command: /bin/sh -c "rm -f /myapp/tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
+    volumes:
+      - ./api:/myapp
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+      - log-data:/myapp/log
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgresql
+    stdin_open: true
+    tty: true
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - ./front/front_end:/usr/src/app
+    command: sh -c "yarn start"
+    ports:
+      - "8000:3333"
+    stdin_open: true
+    tty: true
+  web:
+    build:
+      context: ./nginx
+    volumes:
+      - public-data:/myapp/public
+      - tmp-data:/myapp/tmp
+    ports:
+      - 80:80
+
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  pg_data:

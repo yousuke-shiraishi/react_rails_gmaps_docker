@@ -2,7 +2,7 @@
 https://github.com/yousuke-shiraishi/gmap2
 のアプリをRails api とReactで書き直しました。
 ReactはTypescriptで作成。
-構成としてdockerを使ってWebサーバをnginxを使用。
+構成としてdockerを使ってWebサーバにnginxを使用。
 
 
 アプリの実行時の画像

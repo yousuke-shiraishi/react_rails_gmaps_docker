@@ -4,6 +4,6 @@ AWSに対応するためにaws-sdkを丸っと入れているが
 本番環境では調整する。
 開発環境なので動かすときはdocker-compose up -d
 をした後に　apiのプロセスに入って
-rails db:create
+rails db:createと
 rails db:migrate
 をして下さい。

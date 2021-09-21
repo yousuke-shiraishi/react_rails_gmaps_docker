@@ -1,8 +1,9 @@
 # react_rails_gmaps_docker
 https://github.com/yousuke-shiraishi/gmap2
 のアプリをRails api とReactで書き直しました。
-ReactはTypescriptで作成。
+ReactはTypeScriptで作成。
 構成としてdockerを使ってWebサーバにnginxを使用。
+TerraformでAWSにデプロイしたい。
 
 
 アプリの実行時の画像

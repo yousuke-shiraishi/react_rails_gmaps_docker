@@ -29,7 +29,7 @@ module DeviseTokenReact
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     # config.api_only = false
-    # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone =  'Tokyo'
     # config.eager_load_paths << Rails.root.join("extras")
     # Permit cross origin
     # config.session_store :cookie_store, key: '_interslice_session'
